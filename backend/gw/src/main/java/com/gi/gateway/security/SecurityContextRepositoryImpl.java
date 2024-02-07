@@ -17,6 +17,8 @@ import com.gi.gateway.security.jwt.RouterValidator;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 @Component
 @AllArgsConstructor
 public class SecurityContextRepositoryImpl implements ServerSecurityContextRepository {
@@ -31,15 +33,16 @@ public class SecurityContextRepositoryImpl implements ServerSecurityContextRepos
 	@Override
 	public Mono<SecurityContext> load(ServerWebExchange exchange) {
 		ServerHttpRequest request = exchange.getRequest();
-		if (routerValidator.isSecured(request) && !request.getMethod().equals(HttpMethod.OPTIONS)) {
+		if (Boolean.TRUE.equals(routerValidator.isSecured(request))
+		        && !request.getMethod().equals(HttpMethod.OPTIONS)) {
 			HttpHeaders headers = request.getHeaders();
-			return Mono.just(headers.getFirst(HttpHeaders.AUTHORIZATION))
-					.switchIfEmpty(Mono.error(new BadCredentialsException("authorization not found")))
-					.filter(authHeader -> authHeader.startsWith("Bearer ")).flatMap(authHeader -> {
-						String jwtToken = authHeader.substring(7);
-						Authentication auth = new UsernamePasswordAuthenticationToken(jwtToken, jwtToken);
-						return this.authenticationManager.authenticate(auth).map(SecurityContextImpl::new);
-					});
+			return Mono.just(Objects.requireNonNull(headers.getFirst(HttpHeaders.AUTHORIZATION)))
+			        .switchIfEmpty(Mono.error(new BadCredentialsException("authorization not found")))
+			        .filter(authHeader -> authHeader.startsWith("Bearer ")).flatMap(authHeader -> {
+				        String jwtToken = authHeader.substring(7);
+				        Authentication auth = new UsernamePasswordAuthenticationToken(jwtToken, jwtToken);
+				        return this.authenticationManager.authenticate(auth).map(SecurityContextImpl::new);
+			        });
 		}
 		return Mono.empty();
 	}

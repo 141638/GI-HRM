@@ -6,7 +6,9 @@ public class CommonColumnEntity {
 	public static final String EMPLOYEES = "employees";
 
 	public static final String ID = "id";
+	public static final String CREATED_AT = "created_at";
 	public static final String UPDATED_AT = "updated_at";
+	public static final String CREATED_BY = "created_by";
 	public static final String UPDATED_BY = "updated_by";
 	public static final String DELETE_FLAG = "delete_flag";
 
@@ -29,4 +31,5 @@ public class CommonColumnEntity {
 	public static final String RECRUITER_FLAG = "recruiter_flag";
 	public static final String GUEST_FLAG = "guest_flag";
 	public static final String STAFF_FLAG = "staff_flag";
+	public static final String EMPLOYEE_CODE = "employee_code";
 }

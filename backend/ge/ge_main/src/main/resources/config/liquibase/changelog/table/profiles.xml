@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Creating a new sequence 'profiles_id_seq' -->
+    <changeSet id="1" author="your_username">
+        <createSequence sequenceName="profiles_id_seq" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <!-- Creating a new 'profiles' table with columns -->
+    <changeSet id="2" author="your_username">
+        <createTable tableName="profiles">
+            <column name="id" type="INTEGER" defaultValueSequenceNext="profiles_id_seq">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="employee_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_birth" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salary_basic" type="INTEGER"/>
+            <column name="bank_name" type="VARCHAR(255)"/>
+            <column name="bank_account" type="VARCHAR(255)"/>
+            <column name="image_url" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Adding comments to the table and its columns -->
+    <changeSet id="3" author="your_username">
+        <sql dbms="postgresql">
+            COMMENT ON TABLE profiles IS 'Table to store employee profiles and related information.';
+            COMMENT ON COLUMN profiles.id IS 'Unique identifier for each profile';
+            COMMENT ON COLUMN profiles.employee_id IS 'Refers to the employee''s ID';
+            COMMENT ON COLUMN profiles.full_name IS 'The full name of the employee';
+            COMMENT ON COLUMN profiles.date_of_birth IS 'Employee''s date of birth';
+            COMMENT ON COLUMN profiles.gender IS 'The gender of the employee';
+            COMMENT ON COLUMN profiles.address IS 'The address of the employee';
+            COMMENT ON COLUMN profiles.phone_number IS 'The phone number of the employee';
+            COMMENT ON COLUMN profiles.salary_basic IS 'Basic salary of the employee';
+            COMMENT ON COLUMN profiles.bank_name IS 'Name of the bank for salary account';
+            COMMENT ON COLUMN profiles.bank_account IS 'Bank account number of the employee';
+            COMMENT ON COLUMN profiles.image_url IS 'URL link to the profile image';
+            COMMENT ON COLUMN profiles.description IS 'Short description or note about the profile';
+            COMMENT ON COLUMN profiles.created_at IS 'Timestamp when the profile was created';
+            COMMENT ON COLUMN profiles.updated_at IS 'Timestamp when the profile was last updated';
+            COMMENT ON COLUMN profiles.created_by IS 'ID of the user who created the profile';
+            COMMENT ON COLUMN profiles.updated_by IS 'ID of the user who last updated the profile';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

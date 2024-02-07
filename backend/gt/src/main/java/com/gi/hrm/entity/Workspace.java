@@ -1,5 +1,6 @@
 package com.gi.hrm.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Transient;
@@ -27,5 +28,5 @@ public class Workspace extends CommonEntity {
 	private String name;
 	private String alias;
 	private Project project;
-	private List<User> member;
+	private List<User> member = new ArrayList<>();
 }

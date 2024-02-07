@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="GI-HRM-TASKLOG" />
+        <module name="GI-GATEWAY" />
+        <module name="GI-HRM" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="GI-GATEWAY" options="-parameters" />
+      <module name="GI-HRM" options="-parameters" />
+      <module name="GI-HRM-TASKLOG" options="-parameters" />
+    </option>
+  </component>
+</project>

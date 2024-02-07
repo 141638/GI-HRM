@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Creating sequence for the 'projects' table's 'id' column -->
+    <changeSet id="1" author="your_username">
+        <createSequence sequenceName="projects_id_seq" startValue="1" incrementBy="1" />
+    </changeSet>
+
+    <!-- Creating the 'projects' table with its columns -->
+    <changeSet id="2" author="your_username">
+        <createTable tableName="projects">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="technology" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="customer" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_date" type="timestamp with time zone" />
+            <column name="end_date" type="timestamp with time zone" />
+            <column name="number_member" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="timestamp with time zone" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="timestamp with time zone" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_by" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_by" type="integer">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Adding comments to the table and its columns -->
+    <changeSet id="3" author="your_username">
+        <comment>
+            Adding comments to the 'projects' table and columns.
+        </comment>
+        <sql>
+            COMMENT ON TABLE projects IS 'Table to store details of projects.';
+            COMMENT ON COLUMN projects.id IS 'Unique identifier for the project.';
+            COMMENT ON COLUMN projects.name IS 'Name of the project.';
+            COMMENT ON COLUMN projects.technology IS 'Technologies used in the project.';
+            COMMENT ON COLUMN projects.description IS 'Description of the project.';
+            COMMENT ON COLUMN projects.customer IS 'The customer for whom the project is made.';
+            COMMENT ON COLUMN projects.start_date IS 'The start date of the project.';
+            COMMENT ON COLUMN projects.end_date IS 'The end date of the project.';
+            COMMENT ON COLUMN projects.number_member IS 'Number of team members in the project.';
+            COMMENT ON COLUMN projects.created_at IS 'The date and time when the project was created.';
+            COMMENT ON COLUMN projects.updated_at IS 'The date and time when the project was last updated.';
+            COMMENT ON COLUMN projects.created_by IS 'ID of the user who created the project record.';
+            COMMENT ON COLUMN projects.updated_by IS 'ID of the user who last updated the project record.';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

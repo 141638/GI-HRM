@@ -1,25 +1,26 @@
 package com.gi.gateway.security.jwt;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
-import com.gi.gateway.common.Utils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
+import com.gi.gateway.common.Utils;
+
 @Component
 public class RouterValidator {
-	@Autowired
-	private Utils utils;
 
 	@Value("classpath:json/open-api-endpoints.json")
 	Resource jsonResource;
 
 	@SuppressWarnings("unchecked")
 	public List<String> openApiEndpoints() {
-		Map<String, Object> endpointParserMapping = utils.parseJsonResourceToMap(jsonResource);
+		Map<String, Object> endpointParserMapping = Utils.parseJsonResourceToMap(jsonResource);
 		Object endpoints = endpointParserMapping.get("endpoints");
 		return new ArrayList<>((Collection<String>) endpoints);
 	}

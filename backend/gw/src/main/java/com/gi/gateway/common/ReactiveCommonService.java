@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.util.UriBuilder;
 
@@ -19,6 +20,11 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Service
 public class ReactiveCommonService {
+
+	public String buildUri(String endpoint, String path, MultiValueMap<String, String> params) {
+		return this.buildUriMultiMap(endpoint, path, null, params);
+	}
+
 	public String buildUri(String endpoint, String path, Map<String, Object> params) {
 		return this.buildUri(endpoint, path, null, params);
 	}
@@ -51,12 +57,33 @@ public class ReactiveCommonService {
 		return uriBuidler.build().toASCIIString();
 	}
 
+	private String buildUriMultiMap(String endpoint, String path, List<String> pathVariables,
+	        MultiValueMap<String, String> params) {
+		URL url;
+		try {
+			url = new URL(endpoint);
+		} catch (MalformedURLException e) {
+			log.error(e.getLocalizedMessage());
+			return null;
+		}
+		UriBuilder uriBuidler = new DefaultUriBuilderFactory().builder();
+		uriBuidler.host(url.getHost()).port(url.getPort()).scheme("http").path(url.getPath()).pathSegment(path);
+		if (pathVariables != null) {
+			pathVariables.forEach(uriBuidler::pathSegment);
+		}
+		if (params != null) {
+			params.entrySet().forEach(item -> uriBuidler.queryParam(item.getKey(), item.getValue()));
+		}
+
+		return uriBuidler.build().toASCIIString();
+	}
+
 	public Mono<Integer> currentUserLoginId() {
-		return userDetails().map(userDetail -> ((Integer) ((UserDetailsImpl) userDetail).getId()));
+		return userDetails().map(userDetail -> (((UserDetailsImpl) userDetail).getId()));
 	}
 
 	private Mono<UserDetails> userDetails() {
 		return ReactiveSecurityContextHolder.getContext()
-				.map(contextHolder -> (UserDetails) contextHolder.getAuthentication().getPrincipal());
+		        .map(contextHolder -> (UserDetails) contextHolder.getAuthentication().getPrincipal());
 	}
 }

@@ -164,7 +164,7 @@ public class CommonTemplateOperation {
 				} else if (value instanceof AggregationExpression aggExp) {
 					projectStage = projectStage.and(aggExp).as(entry.getKey());
 				} else {
-					throw new BadRequestException("Not Supported Type", 001);
+					throw new BadRequestException("Not Supported Type", 1);
 				}
 			}
 		}
