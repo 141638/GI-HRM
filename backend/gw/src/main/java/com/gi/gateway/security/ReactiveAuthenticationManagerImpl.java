@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import com.gi.gateway.exception.BadCredentialsException;
 import com.gi.gateway.security.jwt.JwtUtils;
 import com.gi.gateway.security.userDetails.ReactiveUserDetailsServiceImpl;
-import com.gi.gateway.security.userDetails.UserDetailsImpl;
 
 import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
@@ -30,21 +29,21 @@ public class ReactiveAuthenticationManagerImpl implements ReactiveAuthentication
 	public Mono<Authentication> authenticate(Authentication authentication) {
 		String jwtToken = String.valueOf(authentication.getCredentials());
 		Boolean jwtValid = jwtUtils.isValid(jwtToken);
-		if (Objects.isNull(jwtValid) || !jwtValid) {
+		if (Objects.isNull(jwtValid) || Boolean.TRUE.equals(!jwtValid)) {
 			return Mono.error(new BadCredentialsException("Token Invalid"));
 		}
 		Claims claims = jwtUtils.getClaims(jwtToken);
 		String username = jwtUtils.getUsername(jwtToken);
 		@SuppressWarnings("unchecked")
 		Mono<List<String>> rolesMono = Mono.just((List<String>) claims.get("role", List.class))
-				.filter(roles -> roles != null && roles.size() > 0)
-				.switchIfEmpty(Mono.error(new BadCredentialsException("roles not found")));
+		        .filter(roles -> roles != null && !roles.isEmpty())
+		        .switchIfEmpty(Mono.error(new BadCredentialsException("roles not found")));
 
 		return Mono.zip(rolesMono, userDetailsServiceImpl.findByUsername(username)).map(fluxZip -> {
 			List<String> roleList = fluxZip.getT1();
 			UserDetails userDetail = fluxZip.getT2();
-			return new UsernamePasswordAuthenticationToken((UserDetailsImpl) userDetail, null,
-					roleList.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+			return new UsernamePasswordAuthenticationToken(userDetail, null,
+			        roleList.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 		});
 	}
 }

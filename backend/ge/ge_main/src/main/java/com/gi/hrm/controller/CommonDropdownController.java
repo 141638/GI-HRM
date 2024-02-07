@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gi.hrm.dto.response.ApiResponse;
-import com.gi.hrm.service.common.CommonDropdownService;
+import dto.response.ApiResponse;
+import com.gi.hrm.service.CommonDropdownService;
 
 
 @RestController

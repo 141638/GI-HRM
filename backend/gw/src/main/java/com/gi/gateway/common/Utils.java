@@ -1,41 +1,56 @@
 package com.gi.gateway.common;
 
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.json.JsonParseException;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Collections;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
-@NoArgsConstructor
-@Component
 public class Utils {
+    private Utils() {
+        throw new IllegalStateException("Utility class");
+    }
 
-    public static Map<String, Object> getJsonEndpoints(){
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    public static Map<String, Object> getJsonEndpoints() {
         Resource jsonResource = new ClassPathResource(JsonEnpointKeyMapping.RESOURCE_ENDPOINTS_JSON);
         return parseJsonResourceToMap(jsonResource);
     }
+
     public static Map<String, Object> parseJsonResourceToMap(Resource jsonResource) {
         Map<String, Object> jsonMapping = Collections.emptyMap();
         try {
             String source = new String(Files.readAllBytes(jsonResource.getFile().toPath()));
             JsonParser jParser = JsonParserFactory.getJsonParser();
             jsonMapping = jParser.parseMap(source);
-        } catch (IOException e) {
-            log.error(e.getMessage());
-        } catch (JsonParseException e) {
+        } catch (IOException | JsonParseException e) {
             log.error(e.getMessage());
         }
         return jsonMapping;
     }
 
-    ;
+    public static <T> T jsonObjectMapper(String json, Class<T> clazz) {
+        try {
+            return mapper.readValue(json, clazz);
+        } catch (JsonProcessingException e) {
+            log.error("[utils-exception] jsonObjectMapper error: {}", e);
+        }
+        return null;
+    }
+
+    public static <T, Y> String mapToString(Map<T, Y> map) {
+        return map.entrySet().stream().map(tyEntry -> tyEntry.getKey() + "=" + tyEntry.getValue())
+                .collect(Collectors.joining(",", "[", "]"));
+    }
 }

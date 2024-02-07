@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ge_lib</module>
         <module>ge_main</module>
+        <module>common_module</module>
     </modules>
 </project>

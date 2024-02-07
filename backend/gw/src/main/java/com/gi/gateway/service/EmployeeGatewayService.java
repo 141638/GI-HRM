@@ -16,4 +16,5 @@ public interface EmployeeGatewayService {
 
 	Mono<ServerResponse> deleteEmployee(ServerRequest request);
 
+	Mono<ServerResponse> dropdown(ServerRequest request);
 }

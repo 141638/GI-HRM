@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.gi.hrm.dto.request.system.EmployeeAddRequest;
 import com.gi.hrm.dto.request.system.EmployeeListSearchRequest;
-import com.gi.hrm.dto.response.ApiResponse;
-import com.gi.hrm.entity.Employees;
-import com.gi.hrm.entity.Profiles;
-import com.gi.hrm.entity.RoleGroup;
-import com.gi.hrm.entityManager.system.EmployeeListEM;
-import com.gi.hrm.exception.RecordNotFoundException;
-import com.gi.hrm.repository.EmployeeRepository;
-import com.gi.hrm.repository.ProfileRepository;
-import com.gi.hrm.repository.RoleGroupRepository;
+import dto.response.ApiResponse;
+import com.gi.hrm.database.entity.Employees;
+import com.gi.hrm.database.entity.Profiles;
+import com.gi.hrm.database.entity.RoleGroup;
+import com.gi.hrm.database.entityManager.system.EmployeeListEM;
+import exception.RecordNotFoundException;
+import com.gi.hrm.database.repository.EmployeeRepository;
+import com.gi.hrm.database.repository.ProfileRepository;
+import com.gi.hrm.database.repository.RoleGroupRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

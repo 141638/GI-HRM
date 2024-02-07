@@ -1,6 +1,7 @@
 package com.gi.hrm.dto.response;
 
-import com.gi.hrm.entity.RoleGroup;
+
+import com.gi.hrm.database.entity.RoleGroup;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

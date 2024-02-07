@@ -2,11 +2,13 @@ package com.gi.gateway.dto.request.employee;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
+@AllArgsConstructor
 public class EmployeeAddRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 

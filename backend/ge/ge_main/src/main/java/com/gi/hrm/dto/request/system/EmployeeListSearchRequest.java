@@ -2,7 +2,7 @@ package com.gi.hrm.dto.request.system;
 
 import java.util.Date;
 
-import com.gi.hrm.dto.request.CommonPaginatorRequest;
+import dto.request.CommonPaginatorRequest;
 
 import lombok.Getter;
 

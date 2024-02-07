@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gi.hrm.dto.request.system.EmployeeAddRequest;
 import com.gi.hrm.dto.request.system.EmployeeListSearchRequest;
-import com.gi.hrm.dto.response.ApiResponse;
+import dto.response.ApiResponse;
 import com.gi.hrm.service.system.EmployeeListService;
 
 import lombok.AllArgsConstructor;
