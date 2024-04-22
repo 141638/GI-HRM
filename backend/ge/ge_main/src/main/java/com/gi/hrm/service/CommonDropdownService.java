@@ -3,10 +3,10 @@ package com.gi.hrm.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.gi.hrm.dto.response.ApiResponse;
+import com.gi.hrm.dto.response.GenericDropdownResponse;
 import org.springframework.stereotype.Service;
 
-import dto.response.ApiResponse;
-import dto.response.GenericDropdownResponse;
 import com.gi.hrm.database.entity.Departments;
 import com.gi.hrm.database.entity.Projects;
 import com.gi.hrm.database.repository.DepartmentRepository;

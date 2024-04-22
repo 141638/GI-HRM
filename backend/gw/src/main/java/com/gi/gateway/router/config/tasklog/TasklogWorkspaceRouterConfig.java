@@ -9,19 +9,19 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.RouterFunctions.Builder;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.gi.gateway.common.RouterConstants;
+import com.gi.gateway.common.RouterMappingConstants;
 import com.gi.gateway.router.handler.tasklog.TasklogWorkspaceRouterHandler;
 
 @Configuration
 public class TasklogWorkspaceRouterConfig {
-	@Bean("tasklogRouter")
-	RouterFunction<ServerResponse> tasklogWorkspaceRouterConfiguration(TasklogWorkspaceRouterHandler handler) {
-		Consumer<Builder> routerBuilder = builder -> {
-			builder.GET("search", handler::search);
-			builder.PUT("upsert", handler::upsert);
-
-		};
-
-		return RouterFunctions.route().path(RouterConstants.TASKLOG_WORKSPACE, routerBuilder).build();
-	}
+//	@Bean("tasklogRouter")
+//	RouterFunction<ServerResponse> tasklogWorkspaceRouterConfiguration(TasklogWorkspaceRouterHandler handler) {
+//		Consumer<Builder> routerBuilder = builder -> {
+//			builder.GET("search", handler::search);
+//			builder.PUT("upsert", handler::upsert);
+//
+//		};
+//
+//		return RouterFunctions.route().path(RouterMappingConstants.TASKLOG_WORKSPACE, routerBuilder).build();
+//	}
 }

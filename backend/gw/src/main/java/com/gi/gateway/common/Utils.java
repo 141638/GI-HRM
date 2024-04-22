@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Collections;
 import java.util.Map;
@@ -23,8 +24,10 @@ public class Utils {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    public static final String RESOURCE_ENDPOINTS_JSON = "json/router-mapping.json";
+
     public static Map<String, Object> getJsonEndpoints() {
-        Resource jsonResource = new ClassPathResource(JsonEnpointKeyMapping.RESOURCE_ENDPOINTS_JSON);
+        Resource jsonResource = new ClassPathResource(RESOURCE_ENDPOINTS_JSON);
         return parseJsonResourceToMap(jsonResource);
     }
 
@@ -40,11 +43,23 @@ public class Utils {
         return jsonMapping;
     }
 
+    public static Map<String, Object> parseJsonResourceToMap(InputStream jsonResource) {
+        Map<String, Object> jsonMapping = Collections.emptyMap();
+        try {
+            String source = new String(jsonResource.readAllBytes());
+            JsonParser jParser = JsonParserFactory.getJsonParser();
+            jsonMapping = jParser.parseMap(source);
+        } catch (IOException | JsonParseException e) {
+            log.error(e.getMessage());
+        }
+        return jsonMapping;
+    }
+
     public static <T> T jsonObjectMapper(String json, Class<T> clazz) {
         try {
             return mapper.readValue(json, clazz);
         } catch (JsonProcessingException e) {
-            log.error("[utils-exception] jsonObjectMapper error: {}", e);
+            log.error("[utils-exception] jsonObjectMapper error: {}", e.getMessage());
         }
         return null;
     }

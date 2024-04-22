@@ -1,8 +1,8 @@
 package com.gi.gateway.serviceImpl;
 
 import com.gi.gateway.common.Constants;
-import com.gi.gateway.common.JsonEnpointKeyMapping;
 import com.gi.gateway.common.ReactiveCommonService;
+import com.gi.gateway.common.RouterMappingConstants;
 import com.gi.gateway.common.Utils;
 import com.gi.gateway.common.WebClientUtils;
 import com.gi.gateway.dto.request.employee.EmployeeAddRequest;
@@ -18,7 +18,7 @@ import com.gi.gateway.repository.EmployeeRepository;
 import com.gi.gateway.repository.RoleGroupRepository;
 import com.gi.gateway.service.EmployeeGatewayService;
 import lombok.AllArgsConstructor;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+//import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,14 +40,14 @@ public class EmployeeGatewayServiceimpl implements EmployeeGatewayService {
     private final RoleGroupRepository roleGroupRepository;
     private final EmployeeRepository employeeRepository;
 
-    private final RabbitTemplate rabbitGo;
+//    private final RabbitTemplate rabbitGo;
 
     private String getEndpoint() {
-        return String.valueOf(Utils.getJsonEndpoints().get(JsonEnpointKeyMapping.EMPLOYEE) + "/api/staff");
+        return String.valueOf(Utils.getJsonEndpoints().get(RouterMappingConstants.EMPLOYEE) + "/api/staff");
     }
 
     private String getEndpointDropdown() {
-        return String.valueOf(Utils.getJsonEndpoints().get(JsonEnpointKeyMapping.EMPLOYEE) + "/api/dropdown/");
+        return String.valueOf(Utils.getJsonEndpoints().get(RouterMappingConstants.EMPLOYEE) + "/api/dropdown/");
     }
 
     @Override

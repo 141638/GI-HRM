@@ -4,13 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.gihrm.ge</groupId>
+    <groupId>com.gi</groupId>
     <artifactId>gi-hrm</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
 
     <modules>
+        <!-- <module>ge_core</module> -->
+        <!-- <module>ge_kafka</module> -->
+        <module>ge_lib</module>
         <module>ge_main</module>
-        <module>common_module</module>
     </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.10</version>
+                    <configuration>
+                        <useFile>false</useFile>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

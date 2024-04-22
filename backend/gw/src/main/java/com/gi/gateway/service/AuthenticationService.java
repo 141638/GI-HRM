@@ -7,7 +7,7 @@ import com.gi.gateway.entity.Employees;
 import com.gi.gateway.exception.BadCredentialsException;
 import com.gi.gateway.repository.EmployeeRepository;
 import com.gi.gateway.security.jwt.JwtUtils;
-import com.gi.gateway.security.userDetails.UserDetailsImpl;
+import com.gi.gateway.security.user_details.UserDetailsImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,7 +37,7 @@ public class AuthenticationService {
         }
         List<String> roles = UserDetailsImpl.build(employee).getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority).toList();
-        String jwtToken = jwts.generateJwtToken(employee.getEmail(), roles);
+        String jwtToken = jwts.generateJwtToken(employee.getId(), employee.getEmail(), roles);
         LoginResponse loginResponse = new LoginResponse(employee.getId(), username, jwtToken, jwts.getExpiredTimeAt(jwtToken).getTime(),
                 roles);
         return Mono.just(ApiResponse.apiResponseSuccess(loginResponse));

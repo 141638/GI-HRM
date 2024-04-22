@@ -12,7 +12,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.util.UriBuilder;
 
-import com.gi.gateway.security.userDetails.UserDetailsImpl;
+import com.gi.gateway.security.user_details.UserDetailsImpl;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;

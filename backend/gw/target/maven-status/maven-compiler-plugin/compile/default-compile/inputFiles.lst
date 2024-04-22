@@ -1,37 +1,56 @@
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\userDetails\UserDetailsServiceImpl.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\response\common\UserDetailsDto.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\entity\Employees.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\exception\CustomExceptionHandler.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\controller\GatewayEmployeeServiceController.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\serviceImpl\EmployeeGatewayServiceimpl.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\JwsFilter.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\AuthConfigConstants.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\exception\BadCredentialsException.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\GiGatewayApplication.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\response\common\LoginResponse.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\controller\GatewayAuthenticationController.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\service\EmployeeGatewayService.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\request\login\LoginRequest.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\UserDetailsImpl.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\common\Erole.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\common\Constants.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\request\common\CommonPaginatorRequest.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\response\common\ApiResponse.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\request\employee\EmployeeListSearchRequest.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\repository\EmployeeRepository.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\userDetails\ReactiveUserDetailsServiceImpl.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\service\AuthenticationService.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\exception\RecordNotFoundException.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\common\JsonEnpointKeyMapping.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\entity\common\CommonColumnEntity.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\entity\RoleGroup.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\jwt\JwtUtils.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\RouterValidator.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\response\common\ResultPageResponse.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\config\WebClientConfig.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\dto\response\common\ErrorResponse.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\SecurityConfig.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\common\Utils.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\entity\common\CommonEntity.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\GlobalErrorExceptionHandler.java
-E:\Genious Invocation HRM\GI-HRM-GATEWAY\src\main\java\com\gi\gateway\security\userDetails\UserDetailsImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\router\handlerimpl\TasklogWorkspaceRouterHandlerImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\SecurityContextRepositoryImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\repository\RoleGroupRepository.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\serviceImpl\EmployeeGatewayServiceimpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\config\RouteConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\jwt\JwtUtils.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\jwt\RouterValidator.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\service\AuthenticationService.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\PreBuiltReactiveServerResponse.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\Erole.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\tasklog\WorkspaceUser.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\config\CorsConfigurationSourceImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\employee\EmployeeAddRequest.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\entity\common\CommonEntity.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\entity\RoleGroup.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\ReactiveAuthenticationManagerImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\userDetails\ReactiveUserDetailsServiceImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\userDetails\UserDetailsImpl.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\router\config\staff\EmployeeRouterConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\ResultPageResponse.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\router\config\tasklog\TasklogWorkspaceRouterConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\AuthConfigConstants.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\config\GlobalFilterConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\tasklog\WorkspaceUpdateRequest.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\WebClientUtils.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\service\EmployeeGatewayService.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\config\MyRabbitProperties.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\security\SecurityConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\JsonEnpointKeyMapping.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\tasklog\WorkspaceSearchRequest.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\tasklog\WorkspaceProject.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\Constants.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\entity\Employees.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\ApiResponse.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\common\CommonPaginatorRequest.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\ReactiveUtils.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\entity\common\CommonColumnEntity.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\employee\EmployeeListSearchRequest.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\PreBuiltServerResponse.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\router\config\staff\GatewayAuthenticationController.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\router\handler\tasklog\TasklogWorkspaceRouterHandler.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\UserDetailsDto.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\RouterConstants.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\ErrorResponse.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\Utils.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\config\WebClientConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\common\ReactiveCommonService.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\request\login\LoginRequest.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\exception\CustomExceptionHandler.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\config\MyRabbitConfig.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\exception\BadRequestException.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\exception\RecordNotFoundException.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\GiGatewayApplication.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\dto\response\common\LoginResponse.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\repository\EmployeeRepository.java
+D:\Repository\Personal\GI-HRM\backend\gw\src\main\java\com\gi\gateway\exception\BadCredentialsException.java
