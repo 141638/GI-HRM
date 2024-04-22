@@ -1,7 +1,7 @@
 package com.gi.gateway.router.handlerimpl;
 
-import com.gi.gateway.common.JsonEnpointKeyMapping;
 import com.gi.gateway.common.ReactiveCommonService;
+import com.gi.gateway.common.RouterMappingConstants;
 import com.gi.gateway.common.Utils;
 import com.gi.gateway.dto.request.tasklog.WorkspaceUpdateRequest;
 import com.gi.gateway.dto.response.common.ApiResponse;
@@ -21,21 +21,21 @@ public class TasklogWorkspaceRouterHandlerImpl implements TasklogWorkspaceRouter
     private final WebClient webClient;
     private final ReactiveCommonService reactService;
 
-    private static final String ENDPOINT = String
-            .valueOf(Utils.getJsonEndpoints().get(JsonEnpointKeyMapping.TASKLOG) + "/api/workspace");
+//    private static final String ENDPOINT = String
+//            .valueOf(Utils.getJsonEndpoints().get(RouterMappingConstants.TASKLOG) + "/api/workspace");
 
-    @Override
-    public Mono<ServerResponse> search(ServerRequest request) {
-        String uri = reactService.buildUri(ENDPOINT, "search", request.queryParams());
-        Flux<ApiResponse> searchResponseFlux = webClient.get().uri(uri).retrieve().bodyToFlux(ApiResponse.class).log();
-        return PreBuiltReactiveServerResponse.successSSE(searchResponseFlux);
-    }
-
-    @Override
-    public Mono<ServerResponse> upsert(ServerRequest request) {
-        String uri = reactService.buildUri(ENDPOINT, "upsert");
-        return request.bodyToMono(WorkspaceUpdateRequest.class).map(requestBody ->
-                webClient.put().uri(uri).body(Mono.just(requestBody), WorkspaceUpdateRequest.class).retrieve().bodyToMono(ApiResponse.class).log()
-        ).flatMap(PreBuiltReactiveServerResponse::success);
-    }
+//    @Override
+//    public Mono<ServerResponse> search(ServerRequest request) {
+//        String uri = reactService.buildUri(ENDPOINT, "search", request.queryParams());
+//        Flux<ApiResponse> searchResponseFlux = webClient.get().uri(uri).retrieve().bodyToFlux(ApiResponse.class).log();
+//        return PreBuiltReactiveServerResponse.successSSE(searchResponseFlux);
+//    }
+//
+//    @Override
+//    public Mono<ServerResponse> upsert(ServerRequest request) {
+//        String uri = reactService.buildUri(ENDPOINT, "upsert");
+//        return request.bodyToMono(WorkspaceUpdateRequest.class).map(requestBody ->
+//                webClient.put().uri(uri).body(Mono.just(requestBody), WorkspaceUpdateRequest.class).retrieve().bodyToMono(ApiResponse.class).log()
+//        ).flatMap(PreBuiltReactiveServerResponse::success);
+//    }
 }

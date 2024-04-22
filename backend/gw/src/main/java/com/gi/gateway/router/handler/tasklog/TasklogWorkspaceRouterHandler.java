@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 public interface TasklogWorkspaceRouterHandler {
-	Mono<ServerResponse> search(ServerRequest request);
-
-	Mono<ServerResponse> upsert(ServerRequest request);
+//	Mono<ServerResponse> search(ServerRequest request);
+//
+//	Mono<ServerResponse> upsert(ServerRequest request);
 }

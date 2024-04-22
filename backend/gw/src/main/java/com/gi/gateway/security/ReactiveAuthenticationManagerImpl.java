@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.gi.gateway.exception.BadCredentialsException;
 import com.gi.gateway.security.jwt.JwtUtils;
-import com.gi.gateway.security.userDetails.ReactiveUserDetailsServiceImpl;
+import com.gi.gateway.security.user_details.ReactiveUserDetailsServiceImpl;
 
 import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;

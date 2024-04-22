@@ -1,32 +1,21 @@
 package com.gi.gateway.security.jwt;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
-import com.gi.gateway.common.Utils;
+import java.util.List;
 
 @Component
 public class RouterValidator {
+    private final List<String> publicApiEndpoints;
 
-	@Value("classpath:json/open-api-endpoints.json")
-	Resource jsonResource;
+    @Autowired
+    public RouterValidator(List<String> publicApiEndpoints) {
+        this.publicApiEndpoints = publicApiEndpoints;
+    }
 
-	@SuppressWarnings("unchecked")
-	public List<String> openApiEndpoints() {
-		Map<String, Object> endpointParserMapping = Utils.parseJsonResourceToMap(jsonResource);
-		Object endpoints = endpointParserMapping.get("endpoints");
-		return new ArrayList<>((Collection<String>) endpoints);
-	}
-
-	public Boolean isSecured(ServerHttpRequest request) {
-		final List<String> finalListEndpoint = openApiEndpoints();
-		return finalListEndpoint.stream().noneMatch(uri -> request.getURI().getPath().equals(uri));
-	}
+    public Boolean isSecured(ServerHttpRequest request) {
+        return publicApiEndpoints.stream().noneMatch(uri -> request.getURI().getPath().equals(uri));
+    }
 }
