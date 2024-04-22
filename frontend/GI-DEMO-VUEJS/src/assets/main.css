@@ -1,0 +1,48 @@
+@import './base.css';
+
+#app {
+  width: 80vw;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  font-weight: normal;
+}
+
+.overview {
+  color: white;
+  padding-bottom: 1.5rem;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+.p-button-p-0 {
+  padding: 0 !important;
+}
+
+.w-49p {
+  width: 49%;
+}
+
+.grid {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+    cursor: pointer;
+  }
+}
+
+@media(max-width: 760px) {
+  #app {
+    width: 100% !important;
+  }
+}
