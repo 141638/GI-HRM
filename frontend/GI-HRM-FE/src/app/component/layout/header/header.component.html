@@ -1,0 +1,39 @@
+<div class="w-full outer-layout">
+    <div class="grid w-full justify-content-between py-1">
+        <div class="flex align-items-center col-3">
+        </div>
+        <div class="flex justify-content-end align-items-center" style="width:fit-content">
+            <!-- <p-divider layout="vertical"></p-divider> -->
+            <div class="notification ml-1">
+                <p-button icon="bx bx-envelope" class="p-button-lg"
+                    styleClass="p-button-rounded p-button-sm"></p-button>
+                <p-badge class="noti-badge cursor-pointer" value="4" severity="success" severity="warning"></p-badge>
+            </div>
+            <div class="notification mx-3">
+                <p-button icon="pi pi-bell" class="p-button-lg" styleClass="p-button-rounded p-button-sm"></p-button>
+                <p-badge class="noti-badge cursor-pointer" value="9+" severity="success" severity="warning"></p-badge>
+            </div>
+            <p-divider layout="vertical"></p-divider>
+            <p-button class="user-btn" styleClass="p-button-sm" icon="pi pi-user" (click)="userPanel.toggle($event)">
+            </p-button>
+        </div>
+    </div>
+</div>
+<p-menu #languageMenu [model]="languageItems" [popup]="true"></p-menu>
+<p-overlayPanel #userPanel>
+    <ng-template pTemplate>
+        <ul class="user-dropdown">
+            <li routerLink="">
+                <label>{{'header.toProfile' |
+                    translate}}</label>
+            </li>
+            <li routerLink="">
+                <label>{{"header.changePassword" |
+                    translate}}</label>
+            </li>
+            <li (click)="signOut()">
+                <label>{{'header.signOut' | translate}}</label>
+            </li>
+        </ul>
+    </ng-template>
+</p-overlayPanel>

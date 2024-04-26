@@ -1,0 +1,5 @@
+<div class="image-cover relative" #imageCover>
+    <img [style]="rounded?'border-radius:50%;':''" [src]="source" class="absolute" #image>
+    <img *ngIf="type==='avatar'" [src]="avartarFrameSrc"
+        class="avatarFrame absolute" #avatarFrame>
+</div>

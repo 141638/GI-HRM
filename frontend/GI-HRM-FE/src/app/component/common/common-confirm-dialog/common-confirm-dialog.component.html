@@ -1,0 +1,9 @@
+<p-confirmDialog styleClass="w-30rem" header="{{header | translate}}" message="{{message | translate}}" #cd>
+    <ng-template pTemplate="foooter">
+        <button type="button" pButton icon="pi pi-times" label="{{'button.confirmReject' | translate}}"
+            (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="{{'button.confirmAccept' | translate}}"
+            (click)="cd.accept()"></button>
+        <button></button>
+    </ng-template>
+</p-confirmDialog>

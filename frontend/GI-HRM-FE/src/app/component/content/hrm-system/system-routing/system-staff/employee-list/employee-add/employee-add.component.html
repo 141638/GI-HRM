@@ -1,0 +1,86 @@
+<div class="body card border-0 relative">
+    <div class="col-12 pb-5">
+        <form class="grid w-12" [formGroup]="createForm">
+            <div class="grid col-12">
+                <div class="col-6 p-field">
+                    <label for="username">Employee Name</label>
+                    <input id="username" pInputText class="w-full" formControlName="fullName"
+                        [ngClass]="{ 'ng-dirty': submitted && f['fullName'].errors }" />
+                </div>
+                <div class="col-6 p-field">
+                    <label for="password">Gender</label>
+                    <app-common-dropdown [options]="genderOptions" [showClear]="true" [customLabel]="true"
+                        [formGroup]="createForm" formName="gender"></app-common-dropdown>
+                </div>
+            </div>
+            <div class="grid col-12">
+                <div class="col-6 p-field">
+                    <label for="email">Email</label>
+                    <input id="email" pInputText class="w-full" formControlName="email" />
+                </div>
+                <div class="col-6 p-field">
+                    <label for="email">Phone Number</label>
+                    <input id="email" pInputText class="w-full" formControlName="phoneNumber" />
+                </div>
+            </div>
+
+            <div class="grid col-12">
+                <div class="col-12 p-field">
+                    <label for="email">Address</label>
+                    <input id="email" pInputText class="w-full" formControlName="address" />
+                </div>
+            </div>
+            <div class="grid col-12">
+                <div class="col-6 p-field">
+                    <label for="entryDate">Date of Birth</label>
+                    <p-calendar id="entryDate" dateFormat="dd/mm/yy" placeholder="dd/mm/yyyy" styleClass="w-full"
+                        appendTo="body" [showIcon]="true" [showClear]="true" formControlName="dateOfBirth"
+                        [ngClass]="{ 'ng-dirty': submitted && f['dateOfBirth'].errors }"></p-calendar>
+                </div>
+                <div class="col-6 p-field">
+                    <label for="insystemRole">System Role</label>
+                    <app-common-dropdown [options]="insystemRole" [showClear]="true" [customLabel]="true"
+                        [formGroup]="createForm" formName="systemRole"></app-common-dropdown>
+                </div>
+            </div>
+            <div class="grid col-12">
+                <div class="col-6 p-field">
+                    <label for="username">Username</label>
+                    <input id="username" pInputText class="w-full" formControlName="username" autocomplete="off"
+                        readonly onfocus="this.removeAttribute('readonly');" />
+                </div>
+                <div class="col-6 p-field">
+                    <label for="password">Password</label>
+                    <input pInputText id="password" [type]="showPassword ? 'text' : 'password'"
+                        formControlName="password" autocomplete="off" readonly
+                        onfocus="this.removeAttribute('readonly');" />
+                </div>
+            </div>
+            <div class="grid col-12">
+                <div class="col-6 p-field">
+                    <label for="department">Department</label>
+                    <p-dropdown placeholder="Select a Department" styleClass="w-full" appendTo="body"
+                        [options]="departments" optionLabel="name" optionValue="value" formControlName="department">
+                    </p-dropdown>
+                </div>
+                <div class="col-6 p-field">
+                    <label for="insystemRole">Role</label>
+                    <app-common-dropdown [options]="employeeRole" [showClear]="true" [customLabel]="true"
+                        [formGroup]="createForm" formName="role"></app-common-dropdown>
+                </div>
+            </div>
+            <div class="grid p-field col-12">
+                <div class="col-12 p-field">
+                    <label for="description">Description</label>
+                    <textarea pInputTextarea styleClass="w-full" formControlName="description"
+                        placeholder="Add any extra details, characteristics, ..." [rows]="3"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer col-12 text-right">
+    <p-button label="Cancel" styleClass="p-button-raised p-button-text" (click)="cancel()"></p-button>
+    <span class="px-1"></span>
+    <p-button label="Create" (click)="create()"></p-button>
+</div>

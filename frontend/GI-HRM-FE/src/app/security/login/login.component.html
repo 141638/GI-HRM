@@ -1,0 +1,116 @@
+<div class="flex flex-row w-full justify-content-center text-base">
+    <div class="grid w-9 p-0 vertical-center align-items-stretch login-body">
+        <div class="grid col-7 align-items-center">
+            <div class="grid w-full p-4 justify-content-start">
+                <div class="grid col-12 pl-3" style="margin-top: -15px">
+                    <div class="image-cover">
+                        <img src="../../../assets/img/logo-icon.png">
+                    </div>
+                </div>
+                <form class="grid pl-4 col-10" style="margin-top: 10%" [formGroup]="loginForm" (keyup.enter)="onLogin()">
+                    <label class="text-3xl my-2"> {{'login.inputTitle' | translate}}</label>
+                    <div class="w-12 mb-5">
+                        <div *ngIf="isLoginFailed" class="p-error relative dropdown-common-message">
+                            <div>{{ 'validation.validation002' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="grid col-12 my-3">
+                        <div class="grid w-12 p-float-label">
+                            <input id="float-input" type="text" pInputText formControlName="username">
+                            <label for="float-input required">{{'login.inputUsername' | translate}}</label>
+                        </div>
+                        <div class="w-12">
+                            <div *ngIf="!isLoginFailed && isSubmitted && control['username'].errors"
+                                class="p-error relative dropdown-common-message">
+                                <div>{{ 'validation.validation001' | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid w-12 my-2">
+                        <div class="grid w-12 p-float-label">
+                            <input pInputText id="float-input" [type]="showPassword ? 'text' : 'password'"
+                                formControlName="password" />
+                            <!-- <i [class]="showPassword ? 'pi pi-eye' : 'pi pi-eye-slash'" class=" xl:-ml-5"
+                                style="color: #6c757d;padding: 0.5rem;align-items: center;display: flex;"
+                                (click)="showPassword = !showPassword"></i> -->
+                            <label for="float-input required">{{'login.inputPassword' | translate}}</label>
+                        </div>
+                        <div class="w-12">
+                            <div *ngIf="!isLoginFailed && isSubmitted && control['password'].errors"
+                                class="p-error relative dropdown-common-message">
+                                <div>{{ 'validation.validation001' | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid col-12 my-3">
+                        <div style="width: fit-content" class="pl-1">
+                            <p-checkbox [binary]="true" [label]="'login.inputTerms'|translate"
+                                formControlName="terms"></p-checkbox>
+                            <a (click)="termAndConditionDisplay = true"> {{'login.termsAndConditions' | translate}}</a>
+                        </div>
+                    </div>
+                    <div class="grid col-12 justify-content-between mt-4">
+                        <div class="w-full login-button">
+                            <p-button pRiplle (onClick)="onLogin()" [disabled]="!control['terms'].value"
+                                [label]="'login.buttonLogin'| translate"></p-button>
+                        </div>
+                    </div>
+                    <div class="grid col-12 justify-content-end mt-4">
+                        <div style="width: fit-content">
+                            <a routerLink="/forgot-password">
+                                {{'login.forgotPassword' | translate}}
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <div class="grid pl-4 w-full justify-content-between footer">
+                    <div class="left">
+                        <a (click)="termAndConditionDisplay = true">{{'login.termsAndConditions' | translate}}</a>
+                        <a (click)="privacyPolicyDisplay = true" class="mx-4">{{'login.privacyPolicy' | translate}}</a>
+                        <a>{{'login.support' | translate}}</a>
+                    </div>
+                    <div class="right">
+                        {{'login.copyright' | translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid col-5 align-items-center" style="background-color: #1B4D75">
+            <div class="flex w-12 justify-content-center intro-part">
+                <div class="image-cover">
+                    <img src="../../../assets/img/logo-full.png">
+                </div>
+            </div>
+            <div class="grid w-12 text-center justify-content-center" style="color: black">
+                <label class="w-8">
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                    alteration in some form, by injected humour, or randomised words which don't look even slightly
+                    believable.
+                </label>
+                <label class="w-8 my-2">---</label>
+                <label class="w-8">Pablu Picasio</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="{{'login.termsAndConditions' | translate}}" [draggable]="false" [closable]="false"
+    [(visible)]="termAndConditionDisplay" [style]="{'max-width': '50%'}">
+    <div [innerHTML]="'login.termAndConditionContent' | translate"></div>
+    <ng-template pTemplate="footer">
+        <div class="flex w-full justify-content-end mt-3">
+            <p-button pRipple [label]="'login.understand' | translate" (onClick)="termUnderstand()"
+                icon="pi pi-check"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>
+<p-dialog header="{{'login.privacyPolicyContentTitle' | translate}}" [draggable]="false" [closable]="false"
+    [(visible)]="privacyPolicyDisplay" [style]="{'max-width': '50%'}">
+    <div [innerHTML]="'login.privacyPolicyContent' | translate"></div>
+    <ng-template pTemplate="footer">
+        <div class="flex w-full justify-content-end mt-3">
+            <p-button pRipple [label]="'login.understand' | translate" icon="pi pi-check"
+                (onClick)="privacyPolicyDisplay = false"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>

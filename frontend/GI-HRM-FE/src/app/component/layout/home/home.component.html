@@ -1,0 +1,25 @@
+<p-panel [showHeader]="false" styleClass="h-full w-full">
+    <div class="grid align-items-stretch user-ui py-2">
+        <div class="grid w-12 justify-content-start align-items-center relative">
+            <span class="px-2">
+                <app-common-image [width]="2" [height]="2"
+                    [source]="'../../../assets/img/logo-icon.png'"></app-common-image>
+            </span>
+            <span>
+                <label class="font-semibold text-base" style="font-family: 'Georgia', sans-serif !important;">Ginger
+                    Indicator</label>
+            </span>
+        </div>
+    </div>
+    <div class="px-1 my-3">
+        <div class="p-input-icon-left w-full">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText class="p-inputtext-sm" placeholder="Search" />
+        </div>
+        <p-divider layout="horizontal"></p-divider>
+    </div>
+    <div class="w-full mt-2">
+        <p-panelMenu [model]="menuItems" styleClass="w-full h-20rem" [multiple]="true"
+            routerLinkActive="active-menu"></p-panelMenu>
+    </div>
+</p-panel>

@@ -1,0 +1,32 @@
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.summary-card-splitter {
+    width: 100%;
+    opacity: .4;
+}
+
+:host ::ng-deep .p-progressbar {
+    border-radius: 14px;
+
+}
+
+:host ::ng-deep .p-datatable {
+    thead>tr>th {
+        text-align: left !important;
+    }
+}
+
+// :host ::ng-deep .doughnut-chart {
+//     p-chart > :first-child {
+//         display: flex;
+//         justify-content: center;
+
+//         :first-child {
+//             width: 414px !important;
+//             height: 414px !important;
+//         }
+//     }
+// }
