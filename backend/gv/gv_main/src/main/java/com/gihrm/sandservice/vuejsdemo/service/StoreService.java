@@ -94,7 +94,8 @@ public class StoreService {
     }
 
     public Mono<ServerResponse> getStoreList(ServerRequest request) {
-        return PreBuiltServerResponse.success(gvtStoreTemplate.search());
+        return Mono.just(request.queryParams()).map(params -> gvtStoreTemplate.search(params.getFirst("key"), params.getFirst("status")))
+            .flatMap(PreBuiltServerResponse::success);
     }
 
     public Mono<ServerResponse> getStoreDetail(ServerRequest request) {
