@@ -4,6 +4,7 @@ import com.gihrm.sandservice.vuejsdemo.database.entity.GvtStoreDEntity;
 import com.gihrm.sandservice.vuejsdemo.database.entity.GvtStoreEntity;
 import com.gihrm.sandservice.vuejsdemo.database.repository.GvtStoreDRepository;
 import com.gihrm.sandservice.vuejsdemo.database.repository.GvtStoreRepository;
+import com.gihrm.sandservice.vuejsdemo.database.template.GvtStoreTemplate;
 import com.gihrm.sandservice.vuejsdemo.dto.request.GvtStoreInsertionDto;
 import com.gihrm.sandservice.vuejsdemo.dto.request.ServiceTokenDto;
 import com.gihrm.sandservice.vuejsdemo.dto.response.PreBuiltServerResponse;
@@ -15,20 +16,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import reactor.util.function.Tuple2;
 
 import java.time.LocalTime;
 import java.util.Objects;
-import java.util.function.Function;
 
 @Service
 public class StoreService {
+    private final GvtStoreTemplate gvtStoreTemplate;
     private final GvtStoreRepository gvtStoreRepository;
     private final GvtStoreDRepository gvtStoreDRepository;
     private final MongoUtilService mongoUtilService;
 
     @Autowired
-    public StoreService(GvtStoreRepository gvtStoreRepository, GvtStoreDRepository gvtStoreDRepository, MongoUtilService mongoUtilService) {
+    public StoreService(GvtStoreRepository gvtStoreRepository, GvtStoreDRepository gvtStoreDRepository, MongoUtilService mongoUtilService,
+        GvtStoreTemplate gvtStoreTemplate) {
+        this.gvtStoreTemplate = gvtStoreTemplate;
         this.gvtStoreRepository = gvtStoreRepository;
         this.gvtStoreDRepository = gvtStoreDRepository;
         this.mongoUtilService = mongoUtilService;
@@ -92,7 +94,8 @@ public class StoreService {
     }
 
     public Mono<ServerResponse> getStoreList(ServerRequest request) {
-        return PreBuiltServerResponse.success(gvtStoreRepository.findAll());
+        return Mono.just(request.queryParams()).map(params -> gvtStoreTemplate.search(params.getFirst("key"), params.getFirst("status")))
+            .flatMap(PreBuiltServerResponse::success);
     }
 
     public Mono<ServerResponse> getStoreDetail(ServerRequest request) {

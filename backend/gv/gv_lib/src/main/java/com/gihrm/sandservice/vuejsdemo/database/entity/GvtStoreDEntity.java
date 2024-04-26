@@ -1,5 +1,6 @@
 package com.gihrm.sandservice.vuejsdemo.database.entity;
 
+import com.gihrm.sandservice.vuejsdemo.database.entity.nested.GvtStoreManagerNestedDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Transient;
@@ -22,8 +23,8 @@ public class GvtStoreDEntity extends CommonEntity {
     private String description;
     private LocalTime openTime;
     private LocalTime closeTime;
-    private Integer managerId;
-    private String managerName;
+    private GvtStoreManagerNestedDto managerDto;
     private Double rate;
     private Integer liked;
+    private Integer status;
 }
