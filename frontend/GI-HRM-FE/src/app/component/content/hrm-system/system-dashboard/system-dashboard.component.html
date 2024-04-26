@@ -1,0 +1,112 @@
+<div class="card border-0">
+    <div class="grid w-full">
+        <div class="w-12">
+            <label class="text-2xl">{{'systemDashboard.welcome' | translate}} Pablu Picassio!</label>
+        </div>
+    </div>
+    <div class="grid flex-row justify-content-between col-12 mt-3">
+        <div class="col-6">
+            <p-card [subheader]="'systemDashboard.targetRevenue' | translate">
+                <div class="grid">
+                    <div class="flex align-items-center justify-content-between flex-row col-12">
+                        <div class="w-6 text-left">
+                            <label class="text-xl font-semibold">$43,523</label>
+                            <label class="px-1">/</label>
+                            <label class="text-gray-400">$50,000</label>
+                        </div>
+                        <div class="w-6 text-right">
+                            <label class="text-gray-400">{{'systemDashboard.targetRevenueDescription' |
+                                translate}}</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <p-progressBar [value]="revenueProgressBarValue"></p-progressBar>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+        <div class="col-3">
+            <p-card [subheader]="'systemDashboard.totalEmployee' | translate">
+                <div class="grid">
+                    <div class="col-12">
+                        <label class="text-4xl font-semibold">
+                            215
+                        </label>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <label class="text-base text-gray-400">
+                            {{'systemDashboard.totalEmployeeDescription' | translate}}
+                        </label>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+        <div class="col-3">
+            <p-card [subheader]="'systemDashboard.totalProject' | translate">
+                <div class="grid">
+                    <div class="col-12">
+                        <label class="text-4xl font-semibold">
+                            27
+                        </label>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <label class="text-base text-gray-400">
+                            {{'systemDashboard.totalProjectDescription' | translate}}
+                        </label>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+    <div class="grid col-12 align-items-stretch relative">
+        <div class="col-8">
+            <p-card [subheader]="'Company Revenue'">
+                <p-chart type="line" class="w-full" [data]="halfYearRevenueDataChart"></p-chart>
+            </p-card>
+        </div>
+        <div class="col-4 doughnut-chart" style="min-height:100%">
+            <p-card [subheader]="'systemDashboard.workingFormat' | translate" [style]="{'min-height':'100%'}">
+                <p-chart type="doughnut" class="w-full" [data]="salaryData"></p-chart>
+            </p-card>
+        </div>
+    </div>
+
+    <div class="grid col-12 align-items-stretch">
+        <div class="col-12">
+            <p-card [subheader]="'systemDashboard.projectOverview' | translate">
+                <p-table [value]="projectTableOverviews">
+                    <ng-template pTemplate="colgroup">
+                        <colgroup>
+                            <col style="width: 15%" />
+                            <col style="width: 25%" />
+                            <col style="width: 20%" />
+                            <col style="width: 15%" />
+                            <col style="width: 15%" />
+                            <col style="width: 10%" />
+                        </colgroup>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th id="">{{'systemDashboard.projectTable.projectCode' | translate}}</th>
+                            <th id="">{{'systemDashboard.projectTable.projectName' | translate}}</th>
+                            <th id="">{{'systemDashboard.projectTable.estimateDate' | translate}}</th>
+                            <th id="">{{'systemDashboard.projectTable.technology' | translate}}</th>
+                            <th id=""> {{'systemDashboard.projectTable.leadTeam' | translate}}</th>
+                            <th id="">{{'systemDashboard.projectTable.status' | translate}}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-proj>
+                        <tr>
+                            <td>{{proj.projectCode}}</td>
+                            <td>{{proj.projectName}}</td>
+                            <td>{{proj.estimateDate}}</td>
+                            <td>{{proj.technology}}</td>
+                            <td>{{proj.leadTeam}}</td>
+                            <td>{{proj.status}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-card>
+        </div>
+    </div>
+</div>

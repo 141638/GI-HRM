@@ -1,0 +1,49 @@
+<div class="card w-12" [formGroup]="editForm">
+    <div class="grid col-12">
+        <div class="col-4">
+            <label>{{'systemTasklog.workspace.name' | translate}}</label>
+        </div>
+        <div class="col-8">
+            <input pInputText formControlName="name">
+        </div>
+    </div>
+    <div class="grid col-12">
+        <div class="col-4">
+            <label>{{'systemTasklog.workspace.alias' | translate}}</label>
+        </div>
+        <div class="col-8">
+            <input pInputText formControlName="alias">
+        </div>
+    </div>
+    <div class="grid col-12">
+        <div class="col-4">
+            <label>{{'systemTasklog.workspace.project' | translate}}</label>
+        </div>
+        <div class="col-8">
+            <app-common-dropdown [options]="projectDropdown" [formGroup]="editForm" [filter]="true" [showClear]="true"
+                [optionValue]="undefined" formName="project"></app-common-dropdown>
+        </div>
+    </div>
+    <div class="grid col-12">
+        <div class="col-4">
+            <label>{{'systemTasklog.workspace.projectCuratorName' | translate}}</label>
+        </div>
+        <div class="col-8">
+            <app-common-dropdown [options]="employeeDropdown" [formGroup]="editForm" [filter]="true" [showClear]="true"
+                [optionValue]="undefined" formName="curator"></app-common-dropdown>
+        </div>
+    </div>
+    <!-- <div class="grid col-12">
+        <div class="col-4">
+            <label>{{'systemTasklog.workspace.totalMember' | translate}}</label>
+        </div>
+        <div class="col-8">
+        </div>
+    </div> -->
+    <div class="grid col-12">
+        <div class="col-6"></div>
+        <div class="col-6 text-right">
+            <p-button styleClass="p-button-outlined" [label]="'button.apply' | translate" (click)="insertWorkspace()"></p-button>
+        </div>
+    </div>
+</div>

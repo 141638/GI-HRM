@@ -1,0 +1,25 @@
+:host ::ng-deep .p-datatable {
+    thead>tr>th {
+        text-align: left !important;
+    }
+}
+
+.insystem-role-label {
+    padding: 0.3rem;
+    border-radius: 0.25rem;
+}
+
+:host ::ng-deep .p-panel .p-panel-icons-end {
+    display: none;
+}
+
+.immersed-search-btn {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    margin-top: 0.1rem
+}
+
+:host ::ng-deep .p-panel.p-panel-toggleable .p-panel-header {
+    padding: 0.1rem 1rem;
+}

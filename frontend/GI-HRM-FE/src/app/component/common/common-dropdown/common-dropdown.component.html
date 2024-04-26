@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup" class="w-full">
+    <p-dropdown placeholder="Not Selected" styleClass="w-full" appendTo="body" [showClear]="showClear"
+        (onChange)="emitChange($event)" [options]="options" optionLabel="name" [optionValue]="optionValue!"
+        [(ngModel)]="selectedItem" [filter]="filter" formControlName="{{formName}}">
+        <ng-template pTemplate="selectedItem" *ngIf="customLabel && selectedItem !== null">
+            {{selectedLabel | translate}}
+        </ng-template>
+        <ng-template let-item pTemplate="item" *ngIf="customLabel">
+            {{ item.name | translate }}
+        </ng-template>
+    </p-dropdown>
+</div>

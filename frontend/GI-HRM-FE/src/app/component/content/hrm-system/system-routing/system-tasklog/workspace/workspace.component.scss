@@ -1,0 +1,17 @@
+.card {
+  margin-top: 0.5rem;
+}
+
+:host ::ng-deep .p-datatable {
+  thead > tr > th {
+    text-align: left !important;
+  }
+}
+
+:host ::ng-deep .bx {
+  font-size: 1.25rem !important;
+}
+
+:host ::ng-deep .p-divider.p-divider-vertical {
+  padding: 0.6rem 0 !important;
+}

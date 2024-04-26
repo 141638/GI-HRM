@@ -1,0 +1,185 @@
+<div class="card border-0">
+    <form [formGroup]="searchForm" (keyup.enter)="onSearch()">
+        <p-panel [toggleable]="true" [collapsed]="true">
+            <ng-template pTemplate="header">
+                <div class="grid col-12 align-items-center justify-content-end">
+                    <div class="grid align-items-center col-3">
+                        <div class="col-10">
+                            <span class="p-input-icon-right w-full" *ngIf="advanceSearchCollapsed">
+                                <p-button styleClass="p-button-text p-button-raised p-button-sm"
+                                    class="immersed-search-btn" icon="pi pi-search" (click)="onSearch()"></p-button>
+                                <input [placeholder]="'common.searchGeneral' | translate" pInputText class="w-full"
+                                    formControlName="generalKeys" />
+                            </span>
+                        </div>
+                        <div class="col-2">
+                            <div class="w-full text-left">
+                                <p-button icon="pi pi-cog" [class]="rotateClass" (click)="advanceSearchToggle()"
+                                    styleClass="p-button-text p-button-raised"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="grid col-12 align-items-center">
+                <div class="grid align-items-center justify-content-center" style="width: 97%">
+                    <div class="p-field col-2">
+                        <label class="form-label" for="username">{{'systemStaff.employeeName' | translate}}</label>
+                        <input id="username" pInputText class="w-full" formControlName="name" />
+                    </div>
+                    <div class="p-field col-2">
+                        <label class="form-label" for="email">{{'systemStaff.employeeEmail' | translate}}</label>
+                        <input id="email" pInputText class="w-full" formControlName="email" />
+                    </div>
+                    <div class="p-field col-2">
+                        <label for="employeeCode">{{'systemStaff.employeeCode' | translate}}</label>
+                        <input id="employeeCode" pInputText class="w-full" formControlName="employeeCode" />
+                    </div>
+                    <div class="p-field col-2">
+                        <label for="insystemRole">{{'systemStaff.insystemRole' | translate}}</label>
+                        <app-common-dropdown [options]="insystemRole" [showClear]="true" [customLabel]="true"
+                            [formGroup]="searchForm" formName="insystemRole" [showClear]="true"></app-common-dropdown>
+                    </div>
+                    <div class="p-field col-2">
+                        <label class="form-label" for="department">{{'systemStaff.employeeDepartment' |
+                            translate}}</label>
+                        <app-common-dropdown [options]="departments" [showClear]="true" [customLabel]="false"
+                            [formGroup]="searchForm" formName="department" [showClear]="true"></app-common-dropdown>
+                    </div>
+                    <div class="p-field col-2">
+                        <label class="form-label" for="dateOfBirth">{{'systemStaff.dateOfBirth' | translate}}</label>
+                        <p-calendar id="dateOfBirth" class="custom-calendar-sm" dateFormat="yy-mm-dd" appendTo="body"
+                            placeholder="{{'common.notSelected' | translate}}" [showButtonBar]="true" [showClear]="true"
+                            formControlName="dateOfBirth"></p-calendar>
+                    </div>
+                </div>
+                <div class="text-center pt-3" style="width: 3%">
+                    <div class="col-12">
+                        <p-button styleClass="w-full" (click)="onSearch()" icon="pi pi-search"
+                            styleClass="p-button-text p-button-raised"></p-button>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+    </form>
+    <div class="w-12 pt-3 relative">
+        <p-button class="z-1 right-0 absolute" icon="pi pi-plus" (click)="triggerAddPopup()"
+            label="{{'button.add' | translate}}"></p-button>
+        <p-tabView>
+            <p-tabPanel [header]="'systemStaff.inworkingEmployeeList' | translate">
+                <p-table *ngIf="!skeletonLoading" [value]="inworkingEmployeeList" [columns]="colTemplate"
+                    styleClass="w-full">
+                    <ng-template pTemplate="colgroup" let-cols>
+                        <colgroup>
+                            <col *ngFor="let col of cols" [style.width]="col.colWidth" />
+                        </colgroup>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-cols>
+                        <tr>
+                            <th *ngFor="let col of cols">{{col.header | translate}}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-employee>
+                        <tr>
+                            <td class="flex align-items-center">
+                                <div class="grid w-9 justify-content-between align-items-center">
+                                    <div class="grid w-9 align-items-center">
+                                        <div class="pr-4 relative">
+                                            <app-common-image [width]="2" [height]="2" [rounded]="true"
+                                                [type]="'avatar'" [source]="employee.imageUrl"></app-common-image>
+                                        </div>
+                                        <div class="grid flex-column align-items-start w-fit">
+                                            <div class="text-left text-base font-semibold">{{employee.employeeName}}
+                                            </div>
+                                            <div class="text-left text-sm">{{employee.employeeEmail}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-3 text-left text-black-alpha-90 font-semibold">
+                                    <label *ngIf="employee.insystemRole !== undefined"
+                                        class="insystem-role-label w-full"
+                                        [style.background-color]="getInsystemRole(employee.insystemRole).bgColor">
+                                        {{getInsystemRole(employee.insystemRole).name | translate}}
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <label class="text-left">{{employee.employeeCode}}</label>
+                            </td>
+                            <td>
+                                <label class="text-left">{{getDepartment(employee.employeeDepartment)}}</label>
+                            </td>
+                            <td>
+                                <label class="text-left">{{employee.dateOfBirth}}</label>
+                            </td>
+                            <td class="text-center">
+                                <p-menu #actionMenu [model]="actionMenuItems" appendTo="body" [popup]="true"
+                                    styleClass="w-8rem"></p-menu>
+                                <p-button type="button" (click)="actionMenu.toggle($event); actionId=employee.id"
+                                    styleClass="p-button-raised p-button-outlined" pRipple
+                                    [label]="'systemStaff.listAction' | translate">
+                                </p-button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <!-- skeleton table -->
+                <p-table *ngIf="skeletonLoading" [value]="[1]" [columns]="colTemplate" styleClass="w-full">
+                    <ng-template pTemplate="colgroup" let-cols>
+                        <colgroup>
+                            <col *ngFor="let col of cols" [style.width]="col.colWidth" />
+                        </colgroup>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-cols>
+                        <tr>
+                            <th *ngFor="let col of cols">{{col.header | translate}}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-i>
+                        <tr>
+                            <td class="flex align-items-center">
+                                <div class="grid w-9 justify-content-between align-items-center">
+                                    <div class="grid w-9 align-items-center">
+                                        <div class="pr-4 relative">
+                                            <p-skeleton shape="circle" width="4rem" height="4rem"></p-skeleton>
+                                        </div>
+                                        <div class="grid flex-column align-items-start justify-content-around w-fit">
+                                            <p-skeleton shape="rectangle" width="12rem"></p-skeleton>
+                                            <p-skeleton shape="rectangle" width="8rem"></p-skeleton>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-3">
+                                    <p-skeleton shape="rectangle" width="6rem" height="1.5rem"></p-skeleton>
+                                </div>
+                            </td>
+                            <td>
+                                <p-skeleton shape="rectangle" class="text-left"></p-skeleton>
+                            </td>
+                            <td>
+                                <p-skeleton shape="rectangle" class="text-left"></p-skeleton>
+                            </td>
+                            <td>
+                                <p-skeleton shape="rectangle" class="text-left"></p-skeleton>
+                            </td>
+                            <td class="text-center">
+                                <p-menu #actionMenu [model]="actionMenuItems" appendTo="body" [popup]="true"></p-menu>
+                                <button pButton type="button" (click)="actionMenu.toggle($event);"
+                                    icon="pi pi-check-square"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel [header]="'systemStaff.resignedEmployeeList' | translate">
+                Content 2
+            </p-tabPanel>
+            <p-paginator [rows]="pageSize" [totalRecords]="totalRecord==0?1:totalRecord" [pageLinkSize]="pageLinkSize"
+                class="pt-2" (onPageChange)="pageClick($event)" #paginator>
+            </p-paginator>
+        </p-tabView>
+    </div>
+</div>
+<app-common-toast [toastAction]="toastRequest"></app-common-toast>
+<app-common-confirm-dialog [confirmAction]="confirmAction"
+    (confirmEmitter)="deleteConfirm()"></app-common-confirm-dialog>

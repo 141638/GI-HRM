@@ -1,0 +1,15 @@
+<p-toast position="top-right" class="w-fit" [style]="{width: '20rem'}" detail="hello">
+    <ng-template let-message pTemplate="message">
+        <div class="flex flex-column" style="flex: 1">
+            <div class="flex flex-row align-items-center">
+                <span>
+                    <i class="{{message.icon}}" style="font-size: 2rem"></i>
+                </span>
+                <span class="flex flex-column align-items-start justify-content-start pl-2">
+                    <h4 class="my-2">{{message.summary | translate}}</h4>
+                    <label>{{message.detail | translate}}</label>
+                </span>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
