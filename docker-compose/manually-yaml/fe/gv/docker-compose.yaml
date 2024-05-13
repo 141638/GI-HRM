@@ -1,0 +1,9 @@
+version: "3"
+services: 
+  gv:
+    image: hoangthieu2000/gv_fe-image
+    container_name: gv_fe
+    ports:
+      - 5333:80
+    
+
