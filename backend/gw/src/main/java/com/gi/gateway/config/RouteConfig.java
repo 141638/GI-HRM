@@ -25,14 +25,13 @@ public class RouteConfig {
     public RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder) {
         var routerBuilder = routeLocatorBuilder.routes();
         routerMappingProperties.forEach((s, router) ->
-                routerBuilder.route(p -> p
-                        .path(router.getPattern())
-                        .filters(f -> {
-                            rewritePath(f, router.getPattern(), router.getUri());
-                            f.circuitBreaker(c -> c.setName("default").setFallbackUri("forward:/fallback"));
-                            return f;
-                        })
-                        .uri(checkHostLoadBalancingApplying(router))));
+            routerBuilder.route(router.getHost(), p -> p
+                .path(router.getPattern())
+                .filters(f -> {
+                    rewritePath(f, router.getPattern(), router.getUri());
+                    return f;
+                })
+                .uri(checkHostLoadBalancingApplying(router))));
         return routerBuilder.build();
     }
 
@@ -62,6 +61,7 @@ public class RouteConfig {
             throw new IllegalArgumentException("uri is not valid");
         }
 
-        f.rewritePath(predicate.replace(FROM_REWRITE_PATTERN, TO_PREDICATE_REWRITE_PATTERN), uri.replace(FROM_REWRITE_PATTERN, TO_URI_REWRITE_PATTERN));
+        f.rewritePath(predicate.replace(FROM_REWRITE_PATTERN, TO_PREDICATE_REWRITE_PATTERN),
+            uri.replace(FROM_REWRITE_PATTERN, TO_URI_REWRITE_PATTERN));
     }
 }
