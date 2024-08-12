@@ -38,7 +38,7 @@ public class EmployeeListController {
     }
 
     @GetMapping(value = "/details")
-    public ResponseEntity<ApiResponse> details(@RequestParam Integer id) {
+    public ResponseEntity<ApiResponse> details(@RequestParam(name = "id") Integer id) {
         return ResponseEntity.status(HttpStatus.CREATED).header(HEADER_KEY, HEADER_VALUE)
                 .body(employeeListService.details(id));
     }

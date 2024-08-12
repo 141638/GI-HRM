@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="GI-HRM" />
+        <module name="ge_main" />
         <module name="GI-HRM-TASKLOG" />
         <module name="GI-GATEWAY" />
-        <module name="GI-HRM" />
       </profile>
     </annotationProcessing>
   </component>
