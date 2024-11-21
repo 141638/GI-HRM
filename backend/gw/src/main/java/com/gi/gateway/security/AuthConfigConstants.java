@@ -14,7 +14,8 @@ public class AuthConfigConstants {
 	protected static final String[] SYSTEM_STAFF_API = { "/api/resource/employee/**" };
 
 	// CORS Configuration
-	public static final String[] CORS_ALLOWED_ORIGINS = { "http://localhost:4201", "http://localhost:5173" };
+	//public static final String[] CORS_ALLOWED_ORIGINS = { "http://localhost:4201", "http://localhost:5173" };
+	public static final String[] CORS_ALLOWED_ORIGINS = { "*" };
 	public static final String[] CORS_ALLOWED_METHODS = { "OPTIONS", "GET", "POST", "PUT", "DELETE" };
 	public static final long CORS_MAX_AGE = 3600L;
 

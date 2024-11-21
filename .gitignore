@@ -23,7 +23,7 @@
 hs_err_pid*
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-*/target/**
+target/
 
 # Compiled output
 /dist
@@ -65,3 +65,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Docker compose files
+/docker-compose

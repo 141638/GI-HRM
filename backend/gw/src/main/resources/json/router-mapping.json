@@ -1,7 +1,7 @@
 {
   "employee-route": {
     "pattern": "/api/resource/employee/**",
-    "host": "http://localhost:8088",
+    "host": "lb://GE",
     "uri": "/api/staff/**",
     "isLoadBalanced": false
   },
@@ -12,8 +12,8 @@
     "isLoadBalanced": false
   },
   "sandbox.vuejsdemo": {
-    "pattern": "/api/sandbox/vuejsdemo/**",
-    "host": "http://localhost:8154",
+    "pattern": "/endpoint/online/gv/api/**",
+    "host": "lb://GV",
     "uri": "/cas/online/gv/internal/**",
     "isLoadBalanced": false
   }
