@@ -1,0 +1,64 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "3.3.1"
+    id "io.spring.dependency-management" version "1.1.5"
+}
+
+allprojects {
+    group = "com.gi"
+    version = "1.0-SNAPSHOT"
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+    jar {
+        enabled = true
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+subprojects {
+
+    ext {
+        versions = [
+                springBoot   : '3.3.5',
+                gson         : '2.11.0',
+                lombok       : '1.18.34',
+                firebaseAdmin: "9.4.1"
+        ]
+    }
+
+    dependencies {
+        // gson
+        implementation "com.google.code.gson:gson:${versions.gson}"
+
+        // xml bind
+        implementation "javax.xml.bind:jaxb-api:2.3.1"
+        implementation "jakarta.xml.bind:jakarta.xml.bind-api:4.0.2"
+
+        // lombok
+        compileOnly "org.projectlombok:lombok:${versions.lombok}"
+        annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
+
+        // test
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+}
