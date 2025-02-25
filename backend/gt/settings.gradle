@@ -1,0 +1,5 @@
+rootProject.name = 'gt'
+include 'lib'
+include 'core'
+include 'main'
+

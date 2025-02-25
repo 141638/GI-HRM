@@ -1,0 +1,35 @@
+plugins {
+    id "org.springframework.boot" version "3.3.1"
+}
+
+ext {
+    set("springCloudVersion", "2023.0.3")
+    set("springModulith", "1.2.5")
+    set("springConsul", "4.1.2")
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-webflux:${versions.springBoot}"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${versions.springBoot}"
+
+    // Mongodb
+    implementation "org.springframework.boot:spring-boot-starter-data-mongodb-reactive:${versions.springBoot}"
+
+    implementation project(':core')
+    implementation project(':lib')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${versions.springBoot}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.springframework.modulith:spring-modulith-bom:${springModulith}"
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}
+

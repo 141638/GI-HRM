@@ -1,0 +1,19 @@
+server:
+  port: ${port:${SERVER_PORT:8089}}
+
+spring:
+  application:
+    name: gt
+  config:
+    import:
+      - core.properties
+      - lib.properties
+logging:
+  file:
+    name: "main/src/main/resources/logs/system.log"
+  include-application-name: false
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.web.HttpLogging: TRACE
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: DEBUG

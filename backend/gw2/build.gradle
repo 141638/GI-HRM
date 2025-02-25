@@ -1,0 +1,67 @@
+plugins {
+    id "java"
+    id "io.quarkus"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    quarkusVersion = '3.17.0'
+    smallryeStorkVersion = '2.7.1'
+    testcontainersVersion = '1.20.4'
+    restAssuredVersion = '5.5.0'
+    h2Version = '2.3.232'
+}
+
+dependencies {
+    // REST with Jackson
+    implementation "io.quarkus:quarkus-rest-client-jackson:${quarkusVersion}"
+    implementation "io.quarkus:quarkus-rest-jackson:${quarkusVersion}"
+
+    // MongoDB with Panache
+    implementation "io.quarkus:quarkus-mongodb-rest-data-panache:${quarkusVersion}"
+    implementation "io.quarkus:quarkus-mongodb-panache:${quarkusVersion}"
+    implementation "io.quarkus:quarkus-jdbc-h2:${quarkusVersion}"
+    runtimeOnly "com.h2database:h2:${h2Version}"
+
+    // Docker support
+    implementation "io.quarkus:quarkus-container-image-docker:${quarkusVersion}"
+
+    // SmallRye Stork and Consul integration
+    implementation "io.quarkus:quarkus-smallrye-stork:${quarkusVersion}"
+    implementation "io.smallrye.reactive:smallrye-mutiny-vertx-consul-client:${quarkusVersion}"
+    implementation "io.smallrye.stork:stork-service-discovery-consul:${smallryeStorkVersion}"
+    implementation "io.smallrye.stork:stork-service-registration-consul:${smallryeStorkVersion}"
+
+    // Enforced platform
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+
+    // Testing
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    testImplementation "io.quarkus:quarkus-junit5:${quarkusVersion}"
+    testImplementation "org.testcontainers:consul:${testcontainersVersion}"
+    testImplementation "org.testcontainers:junit-jupiter:${testcontainersVersion}"
+}
+
+group 'com.gi.hrm'
+version '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+test {
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+}
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}

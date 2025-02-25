@@ -1,0 +1,29 @@
+plugins {
+    id "org.springframework.boot" version "3.3.1" apply false
+}
+
+ext {
+    set("springVersion", "6.1.14")
+    set("jackson", "2.18.1")
+    set("h2", "2.3.232")
+    set("mongodbCore", "4.4.0")
+}
+
+dependencies {
+    // Webflux and spring context
+    implementation "org.springframework:spring-webflux:${springVersion}"
+    implementation "org.springframework:spring-context:${springVersion}"
+
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jackson}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jackson}"
+
+    // Spring boot
+    implementation "org.springframework.boot:spring-boot:${versions.springBoot}"
+
+    implementation "org.springframework.data:spring-data-mongodb:${mongodbCore}"
+
+    // H2
+    runtimeOnly("com.h2database:h2:${h2}")
+    testImplementation "com.h2database:h2:${h2}"
+}
